@@ -1,0 +1,57 @@
+version: '2.2'
+
+services:
+    nginx:
+        image: nginx:alpine
+        ports:
+            - 80:80
+        volumes:
+            - ./code:/code
+            - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+        depends_on:
+            - php
+        restart: unless-stopped
+        cpus: 0.5
+        mem_limit: 200M
+        memswap_limit: 200M
+
+    mariaDB:
+        image: yobasystems/alpine-mariadb
+        ports:
+            - 3306:3306
+        volumes:
+            - ./db:/var/lib/mysql:rw
+        depends_on:
+            - nginx
+        environment:
+            - MYSQL_ROOT_PASSWORD=berrabe
+        restart: unless-stopped
+        cpus: 0.5
+        mem_limit: 200M
+        memswap_limit: 200M     
+
+    php:
+        build: .
+        volumes:
+            - ./code:/code
+        restart: unless-stopped
+        cpus: 0.5
+        mem_limit: 200M
+        memswap_limit: 200M
+
+
+    phpmyadmin:
+        image: mhzawadi/phpmyadmin
+        ports:
+            - 8080:80
+        environment:
+            - PMA_HOST=mariaDB
+        depends_on:
+            - mariaDB
+        restart: unless-stopped
+        cpus: 0.5
+        mem_limit: 200M
+        memswap_limit: 200M 
+
+
+
