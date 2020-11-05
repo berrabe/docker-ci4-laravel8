@@ -7,7 +7,7 @@
 ### 1 - PREPARING THE DOCKER STACK
 ---
 This docker is useful for running the latest php frameworks, such as laravel 8 or code igniter 4. 
-It includes Composer and all the php extensions needed to run both frameworks above.
+It includes Nginx, MariaDB, PHP with composer and all the extensions needed to run the frameworks, and PHPMyAdmin.
 To use docker-php-framework, follow the steps below
 
 - Clone this repo
@@ -43,6 +43,9 @@ Or you can see the steps below
 ```sh
 > docker exec dockerphpframework_php_1 composer global require laravel/installer
 > docker exec dockerphpframework_php_1 composer create-project --prefer-dist laravel/laravel < YOUR PROJECT DIR NAME >
+
+# if laravel not auto generated the key, you need generated it manually with
+> docker exec dockerphpframework_php_1 php < YOUR PROJECT DIR NAME >/artisan key:generate
 ```
 
 <br/>
