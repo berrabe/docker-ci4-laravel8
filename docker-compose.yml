@@ -17,8 +17,6 @@ services:
 
     mariaDB:
         image: yobasystems/alpine-mariadb
-        ports:
-            - 3306:3306
         volumes:
             - ./db:/var/lib/mysql:rw
         depends_on:
