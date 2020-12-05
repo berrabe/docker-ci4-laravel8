@@ -23,7 +23,6 @@ RUN docker-php-ext-configure intl \
 	pdo \
 	pdo_mysql \
 	bcmath \
-	json \
 	tokenizer \
 	ctype \
 	fileinfo \
