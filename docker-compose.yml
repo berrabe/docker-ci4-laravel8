@@ -56,3 +56,10 @@ services:
             PMA_HOST: mariaDB
         depends_on:
             - mariaDB
+
+
+# # For Custom External Network
+# networks:
+#    default:
+#       external:
+#          name: Custom-Network
