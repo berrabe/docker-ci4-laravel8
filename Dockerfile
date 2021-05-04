@@ -20,15 +20,8 @@ RUN apk add --no-cache \
 RUN docker-php-ext-configure intl \
 	&& docker-php-ext-install intl \
 	mysqli \
-	pdo \
 	pdo_mysql \
-	bcmath \
-	tokenizer \
-	ctype \
-	fileinfo \
-	xml \
-	mbstring \
-	&& docker-php-ext-enable mbstring 
+	bcmath
 
 
 # delete tmp files
